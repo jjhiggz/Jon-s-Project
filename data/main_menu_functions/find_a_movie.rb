@@ -12,5 +12,5 @@ def find_a_movie(user)
     dlkjh = gets
   end
   
-  main_menu(user)
+  main_menu(user)  
 end

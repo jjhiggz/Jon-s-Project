@@ -69,7 +69,7 @@ class Cli
     
     def create_age(username,password)
       puts "please Type in your age"
-      age = isnum(gets.strip)
+      age = gets.strip
       system("clear")
       if age
         check(age,"age") ? create_user(username,password,age) : create_age(username,password)
