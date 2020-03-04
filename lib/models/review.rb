@@ -1,4 +1,4 @@
 class Review < ActiveRecord::Base
-has_many :movies
-has_many :users
+belongs_to :movies
+belongs_to :users
 end

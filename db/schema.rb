@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_220346) do
+ActiveRecord::Schema.define(version: 2020_03_04_045229) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
@@ -35,4 +35,6 @@ ActiveRecord::Schema.define(version: 2020_03_03_220346) do
     t.integer "age"
   end
 
+  add_foreign_key "reviews", "movies"
+  add_foreign_key "reviews", "users"
 end
