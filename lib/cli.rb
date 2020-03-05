@@ -92,7 +92,7 @@ class Cli
   
   def main_menu(user)
     system("clear")
-    puts main_menu_array()
+    
     prompt = TTY::Prompt.new
     a = prompt.enum_select("Select an Option",main_menu_array)
     system("clear")

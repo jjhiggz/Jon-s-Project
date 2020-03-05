@@ -31,7 +31,8 @@ def write_a_review(user)
     stars = gets.strip.to_i
     puts "Inputting entry [press enter to continue]"
     gets.strip
-    Review.create(user_id: user.id, optional_description: option, movie_id: Movie.find(response).id)
+    new_review = Review.create(user_id: user, optional_description: option, movie_id: Movie.find(response))
+    new_review.save
     system("clear")
     main_menu(user)
   end

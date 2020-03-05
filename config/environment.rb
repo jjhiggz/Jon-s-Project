@@ -8,4 +8,4 @@ require_all 'lib/models'
 
 ActiveRecord::Base.logger = nil
 
-#binding.pry
+# binding.pry

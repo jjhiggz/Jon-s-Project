@@ -10,3 +10,7 @@ Movie.create(title: bmHash[i]["title"], year_released: bmHash[i]["year_released"
 i+=1
 end
 
+# User.create(name: "Jon" , password: "Jon" , age: "26")
+# User.create(name: "Todd" , password: "Todd" , age: "26")
+# Review.create(star_rating:4 , user_id: 1, movie_id: 1 )
+# Review.create(star_rating:3 , user_id: 2, movie_id: 1 )

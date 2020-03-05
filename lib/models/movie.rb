@@ -9,13 +9,13 @@ class Movie < ActiveRecord::Base
     end.uniq
   end
 
-  def average_rating
-    # binding.pry
-    star_sum = self.reviews.reduce(0) do |sum, n|
-      sum += n.star_rating
-    end
-    star_sum/self.reviews.count
-  end 
+  # def average_rating
+  #   # binding.pry
+  #   star_sum = self.reviews.reduce(0) do |sum, n|
+  #     sum += n.star_rating
+  #   end
+  #   star_sum/self.reviews.count
+  # end 
 
   
 
