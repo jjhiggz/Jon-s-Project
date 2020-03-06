@@ -6,11 +6,9 @@ class Cli
 
   def start
     system("clear")
-    # User.all.each{|n|n.reload}
-    # Movie.all.each{|n|n.reload}
-    # Review.all.each{|n|n.reload}
-
-      puts "WELCOME TO THE BILL MURRAY MOVIE THINGY CLI TYPE THING I GUESS"
+    font = TTY::Font.new("DOOM")
+    pastel = Pastel.new
+      puts pastel.yellow(font.write("BILL MURRAY MOVIE THINGY"))
       puts "press enter to continue"
         asdkljh = gets
           system("clear")
@@ -125,7 +123,13 @@ class Cli
     Review.all.each{|n|n.reload}
     User.all.each{|n|n.reload}
 
+    font = TTY::Font.new("DOOM")
+    pastel = Pastel.new
+      puts pastel.yellow(font.write("Main Menu"))
 
+      puts "press enter to continue"
+      dsdljkfh = gets
+      system("clear")
 
     prompt = TTY::Prompt.new
     a = prompt.enum_select("Select an Option",main_menu_array)
