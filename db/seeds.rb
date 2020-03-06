@@ -9,6 +9,7 @@ while i < bmHash.length
 Movie.create(title: bmHash[i]["title"], year_released: bmHash[i]["year_released"].to_i, pg_rating: bmHash[i]["pg_rating"], runtime: bmHash[i]["runtime"].to_i, genre: bmHash[i]["genre"])
 i+=1
 end
+
 jon = User.create(name: "Jon" , password: "Jon" , age: "26")
 todd = User.create(name: "Todd" , password: "Todd" , age: "26")
 willy = User.create(name: "Willy" , password: "Willy" , age: "30")
