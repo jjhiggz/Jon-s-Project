@@ -1,13 +1,20 @@
 #  require_relative '/.../config/environment.rb'
 
 def change_a_review(user)
+#  binding.pry
   system("clear")
   #prompt the user
+  if user.reviews.count == 0 
+    puts "No reviews to Change [press enter]"
+    asdlkfjh = gets
+    main_menu(user)
+  end
+
   prompt_change = TTY::Prompt.new
   movie_titles = user.movies.map{|n|n.title}
   movie_title = prompt_change.enum_select("Select a review to change",movie_titles)
-
-  #define which review we are changing
+# binding.pry
+#   #define which review we are changing
   movie_id = Movie.find_by(title: movie_title).id
   review = Review.find_by(movie_id: movie_id, user_id:user.id)
 

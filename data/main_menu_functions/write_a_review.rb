@@ -3,7 +3,11 @@ def write_a_review(user)
   response = gets.strip
         system("clear")
   def find_movie(response,user)
-    if Movie.find(response) != nil
+    # binding.pry
+    a = Movie.all.find{|n|n.id == response.to_i}
+    # binding.pry
+    if a != nil
+      # binding.pry
       system("clear")
     puts "is your movie called #{Movie.find(response).title}? [yes or no]"  
       check_movie(response,user)
@@ -11,12 +15,12 @@ def write_a_review(user)
       system("clear")
     puts "Movie not found, sending back to main menu [press enter]" 
     dsafkljhi = gets.strip
-    main_menu()
+    main_menu(user)
     end
   end
   def check_movie(response,user)
     answer = gets.strip
-    if answer = "yes"
+    if answer == "yes"
       write_review(user,response)
     else
       main_menu(user)
@@ -31,7 +35,7 @@ def write_a_review(user)
     stars = gets.strip.to_i
     puts "Inputting entry [press enter to continue]"
     gets.strip
-    new_review = Review.create(user_id: user, optional_description: option, movie_id: Movie.find(response))
+    new_review = Review.create(user: user, optional_description: option, movie: Movie.find(response))
     new_review.save
     system("clear")
     main_menu(user)
