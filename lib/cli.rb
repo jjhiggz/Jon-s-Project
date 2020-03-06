@@ -6,32 +6,58 @@ class Cli
 
   def start
     system("clear")
-    puts "WELCOME TO THE BILL MURRAY MOVIE THINGY CLI TYPE THING I GUESS"
-    puts "press enter to continue"
-    asdkljh = gets
+    # User.all.each{|n|n.reload}
+    # Movie.all.each{|n|n.reload}
+    # Review.all.each{|n|n.reload}
+
+      puts "WELCOME TO THE BILL MURRAY MOVIE THINGY CLI TYPE THING I GUESS"
+      puts "press enter to continue"
+        asdkljh = gets
+          system("clear")
+      puts "Do you have an account already ['yes' or 'no']"
+        answer = gets.strip
     system("clear")
-    puts "Do you have an account already"
-    answer = gets.strip
-    system("clear")
-    if answer == "yes"
-      login_protocol()
-    elsif answer == "no"
-      create_user_protocol()
-    else 
-      puts "That answer is not supported"
-    end
-    #improve visual
+        if answer == "yes"
+          login_protocol()
+        elsif answer == "no"
+          create_user_protocol()
+        else 
+          puts "That answer is not supported, this program will restart upon pressing enter"
+          aswdlfkbhj = gets
+          aswdlfkbhj = Cli.new
+          aswdlfkbhj.start
+        end
+          #improve visual
   end
 
   def login_protocol
     def login
+      system('clear')
       puts "Please Type in your fucking username"
       count = 0
       username = gets.strip
+      # binding.pry
+      username_check = User.all.find {|n| n.name == username }
+      if username_check != nil
+        # binding.pry
+        user = User.find_by name: username
+        system("clear")
+        password_check(user,count)
+      else 
+        prompt = TTY::Prompt.new
+        options = ["Sign Up", "Retry Logging in", "exit"]
+    a = prompt.enum_select("Account not found, what wuld you like to do next",options)
+       b =Cli.new 
+        case a
+          when options[0]
+            b.create_user_protocol
+          when options[1]
+            b.login_protocol
+          when options[2] 
+            puts "Goodbye [press enter]"
+          end
 
-      user = User.find_by name: username
-      system("clear")
-      password_check(user,count)
+      end
     end
 
     def password_check(user,count)
@@ -49,6 +75,7 @@ class Cli
   end
 
   def create_user_protocol
+    system("clear")
     def create_user_name
       puts "Please Type in your user name"
       username = gets.strip
@@ -85,6 +112,7 @@ class Cli
     
     def create_user(username,password,age)
       user = User.create(name: username, password: password, age: age) 
+      user.save
       main_menu(user)
     end
     create_user_name()
@@ -92,11 +120,17 @@ class Cli
   
   def main_menu(user)
     system("clear")
-    
+
+    Movie.all.each{|n|n.reload}
+    Review.all.each{|n|n.reload}
+    User.all.each{|n|n.reload}
+
+
+
     prompt = TTY::Prompt.new
     a = prompt.enum_select("Select an Option",main_menu_array)
     system("clear")
-    case a
+      case a
       when main_menu_array[0] #find a movie
         find_a_movie(user)
       when main_menu_array[1] #Look at list of movies
@@ -111,7 +145,7 @@ class Cli
         puts "Goodbye #{user.name}[press enter]"
         a = gets
       when main_menu_array[6] #groundogggggggf
-        groundhog_day(user)
-    end
+          groundhog_day(user)
+      end
   end
 end
